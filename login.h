@@ -2,6 +2,8 @@
 #define LOGIN_H
 
 #include <QDialog>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
 
 namespace Ui {
 class Login;
@@ -14,6 +16,9 @@ class Login : public QDialog
 public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
+
+private slots:
+    void on_loginButton_clicked();
 
 private:
     Ui::Login *ui;

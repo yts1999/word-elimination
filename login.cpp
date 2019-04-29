@@ -12,3 +12,9 @@ Login::~Login()
 {
     delete ui;
 }
+
+void Login::on_loginButton_clicked() {
+   QString usr = ui->userName->text();
+   QString pwd = ui->passWord->text();
+
+}
