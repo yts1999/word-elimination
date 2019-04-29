@@ -2,15 +2,12 @@
 #define LOGIN_H
 
 #include <QDialog>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
 
 namespace Ui {
 class Login;
 }
 
-class Login : public QDialog
-{
+class Login : public QDialog {
     Q_OBJECT
 
 public:
