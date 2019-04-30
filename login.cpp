@@ -20,5 +20,11 @@ void Login::on_loginButton_clicked() {
         if (pwd == "")
             QMessageBox::warning(this,"错误","请输入密码！");
         else {
+            int flag = userdb.check_usr_pwd(usr,pwd);
+            if (flag == 1)
+                QMessageBox::warning(this,"错误","该用户不存在！");
+            else
+                if (flag == 2)
+                    QMessageBox::warning(this,"错误","密码错误！");
         }
 }
