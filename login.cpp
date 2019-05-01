@@ -3,8 +3,7 @@
 #include <QMessageBox>
 
 Login::Login(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Login) {
+    QWidget(parent), ui(new Ui::Login) {
     ui->setupUi(this);
 }
 
@@ -29,7 +28,5 @@ void Login::on_loginButton_clicked() {
         }
 }
 
-void Login::on_registerButton_clicked()
-{
-
+void Login::on_registerButton_clicked() {
 }

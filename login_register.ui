@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Login_Register</class>
+ <widget class="QWidget" name="Login_Register">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>330</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>单词消除游戏</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
