@@ -3,7 +3,7 @@
 #include <QMessageBox>
 
 Login::Login(QWidget *parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::Login) {
     ui->setupUi(this);
 }
@@ -27,4 +27,9 @@ void Login::on_loginButton_clicked() {
                 if (flag == 2)
                     QMessageBox::warning(this,"错误","密码错误！");
         }
+}
+
+void Login::on_registerButton_clicked()
+{
+
 }
