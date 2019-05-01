@@ -17,12 +17,14 @@ public:
     explicit Login_Register(QWidget *parent = nullptr);
     ~Login_Register();
 
+private slots:
+    void switch_to_login();
+    void switch_to_register();
+
 private:
     Ui::Login_Register *ui;
     Login lw;
     Register rw;
-    void switch_to_login();
-    void switch_to_register();
 };
 
 #endif // LOGIN_REGISTER_H

@@ -6,7 +6,10 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
 }
 
-Register::~Register()
-{
+Register::~Register() {
     delete ui;
+}
+
+void Register::on_loginButton_clicked() {
+    emit toLogin();
 }

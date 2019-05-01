@@ -19,7 +19,7 @@
      <x>90</x>
      <y>100</y>
      <width>216</width>
-     <height>194</height>
+     <height>196</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_register">
@@ -45,7 +45,7 @@
       <item row="1" column="1" colspan="2">
        <widget class="QLineEdit" name="nickName">
         <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
+         <enum>QLineEdit::Normal</enum>
         </property>
        </widget>
       </item>
@@ -101,14 +101,28 @@
      </layout>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="confirmButton">
-      <property name="text">
-       <string>确认注册</string>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-     </widget>
+     <layout class="QGridLayout" name="gridLayout_button">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="confirmButton">
+        <property name="text">
+         <string>确认注册</string>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="loginButton">
+        <property name="text">
+         <string>返回登录界面</string>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
