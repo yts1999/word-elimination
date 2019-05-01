@@ -5,6 +5,7 @@ Login_Register::Login_Register(QWidget *parent) :
     QWidget(parent), ui(new Ui::Login_Register), lw(this), rw(this) {
     ui->setupUi(this);
     switch_to_login();
+    setFixedSize(400,330);
     connect(&lw, SIGNAL(toRegister()), this, SLOT(switch_to_register()));
     connect(&rw, SIGNAL(toLogin()), this, SLOT(switch_to_login()));
 }
