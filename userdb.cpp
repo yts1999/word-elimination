@@ -6,7 +6,7 @@
 #include <QVariant>
 
 UserDatabase::UserDatabase() :
-    QSqlDatabase (addDatabase("QSQLITE", "userdb")) {
+    QSqlDatabase(addDatabase("QSQLITE", "userdb")) {
         setHostName("localhost");
         setDatabaseName("users.db");
         if (! open()) {
@@ -14,7 +14,8 @@ UserDatabase::UserDatabase() :
         }
         else {
             QSqlQuery userdb_create(*this);
-            userdb_create.exec("create table user(name varchar(10) primary key, passwd varchar(10))");
+            userdb_create.exec("create table player(name varchar(10) primary key, passwd varchar(20), nickname varchar(20), cp_num int, exp int, level int)");
+            userdb_create.exec("create table manager(name varchar(10) primary key, passwd varchar(20), )");
         }
     }
 

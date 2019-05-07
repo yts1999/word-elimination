@@ -14,7 +14,7 @@ class Login_Register : public QWidget
     Q_OBJECT
 
 public:
-    explicit Login_Register(QWidget *parent = nullptr);
+    explicit Login_Register(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr);
     ~Login_Register();
 
 private slots:

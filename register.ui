@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>330</height>
+    <width>500</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>100</y>
+     <x>140</x>
+     <y>110</y>
      <width>216</width>
-     <height>196</height>
+     <height>197</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_register">
@@ -89,6 +89,9 @@
         <property name="text">
          <string>闯关者</string>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">userCategory</string>
+        </attribute>
        </widget>
       </item>
       <item row="4" column="2">
@@ -96,6 +99,9 @@
         <property name="text">
          <string>出题者</string>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">userCategory</string>
+        </attribute>
        </widget>
       </item>
      </layout>
@@ -129,8 +135,8 @@
   <widget class="QLabel" name="label_title">
    <property name="geometry">
     <rect>
-     <x>65</x>
-     <y>40</y>
+     <x>115</x>
+     <y>30</y>
      <width>270</width>
      <height>41</height>
     </rect>
@@ -154,7 +160,36 @@
     <enum>Qt::AutoText</enum>
    </property>
   </widget>
+  <widget class="QLabel" name="hint">
+   <property name="geometry">
+    <rect>
+     <x>39</x>
+     <y>325</y>
+     <width>422</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>注意：用户名不能超过10位，只能由字母、数字和下划线组成；</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="hint_2">
+   <property name="geometry">
+    <rect>
+     <x>84</x>
+     <y>350</y>
+     <width>281</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>昵称不能超过20位；密码不能超过20位。</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="userCategory"/>
+ </buttongroups>
 </ui>

@@ -13,8 +13,9 @@ class Login : public QWidget
     Q_OBJECT
 
 public:
-    explicit Login(QWidget *parent = nullptr);
+    explicit Login(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr);
     ~Login();
+    void refresh();
 
 signals:
     void toRegister();
@@ -25,7 +26,7 @@ private slots:
 
 private:
     Ui::Login *ui;
-    UserDatabase userdb;
+    UserDatabase *userdb;
 };
 
 #endif // LOGIN_H
