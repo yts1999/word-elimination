@@ -4,7 +4,7 @@
 Register::Register(QWidget *parent, UserDatabase *_userdb) :
     QWidget(parent), ui(new Ui::Register), userdb(_userdb) {
     ui->setupUi(this);
-    ui->userName->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{0,20}$"), this));
+    ui->userName->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{1,20}$"), this));
 }
 
 Register::~Register() {
