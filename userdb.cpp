@@ -14,8 +14,8 @@ UserDatabase::UserDatabase() :
         }
         else {
             QSqlQuery userdb_create(*this);
-            userdb_create.exec("create table player(name varchar(10) primary key, passwd varchar(20), nickname varchar(20), cp_num int, exp int, level int)");
-            userdb_create.exec("create table manager(name varchar(10) primary key, passwd varchar(20), )");
+            userdb_create.exec("create table user(name varchar(10) primary key, passwd varchar(20), "
+                               "nickname varchar(20), type tinyint, cp_num int, exp int, level int)");
         }
     }
 
@@ -24,7 +24,13 @@ UserDatabase::~UserDatabase() {
     removeDatabase("userdb");
 }
 
-int UserDatabase::check_usr_pwd(const QString &usr,const QString &pwd) const {
+bool UserDatabase::check_usr(const QString &usr) const {
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString("select * from user where name=='%1'").arg(usr));
+    return userdb_query.first();
+}
+
+int UserDatabase::check_usr_pwd(const QString &usr, const QString &pwd) const {
     QSqlQuery userdb_query(*this);
     userdb_query.exec(QString("select * from user where name=='%1'").arg(usr));
     if (! userdb_query.first())
@@ -34,4 +40,9 @@ int UserDatabase::check_usr_pwd(const QString &usr,const QString &pwd) const {
             return 0;
         else
             return 2;
+}
+
+void UserDatabase::add_usr(const QString &usr, const QString &pwd, const QString &name, const int &usrtype) {
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString(""));
 }

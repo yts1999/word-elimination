@@ -3,7 +3,6 @@
 
 #include "userdb.h"
 #include <QWidget>
-#include <QRegExpValidator>
 
 namespace Ui {
 class Register;
@@ -22,6 +21,7 @@ signals:
     void toLogin();
 
 private slots:
+    void on_confirmButton_clicked();
     void on_loginButton_clicked();
 
 private:
