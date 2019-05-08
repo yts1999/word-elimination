@@ -34,6 +34,8 @@ void Login::on_loginButton_clicked() {
             else
                 if (flag == 2)
                     QMessageBox::warning(this, "提示", "密码错误！");
+                else
+                    emit toMainWindow();
         }
 }
 

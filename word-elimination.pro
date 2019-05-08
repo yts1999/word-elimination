@@ -29,19 +29,22 @@ SOURCES += \
     userdb.cpp \
     login.cpp \
     login_register.cpp \
-    register.cpp
+    register.cpp \
+    mainwindow.cpp
 
 HEADERS += \
     userdb.h \
     login.h \
     login_register.h \
-    register.h
+    register.h \
+    mainwindow.h
 
 FORMS += \
     login.ui \
     login.ui \
     login_register.ui \
-    register.ui
+    register.ui \
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

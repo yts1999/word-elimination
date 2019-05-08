@@ -19,6 +19,7 @@ public:
 
 signals:
     void toRegister();
+    void toMainWindow();
 
 private slots:
     void on_loginButton_clicked();

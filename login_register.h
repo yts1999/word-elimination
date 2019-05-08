@@ -17,9 +17,13 @@ public:
     explicit Login_Register(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr);
     ~Login_Register();
 
+signals:
+    void toMainWindow();
+
 private slots:
     void switch_to_login();
     void switch_to_register();
+    void switch_to_MainWindow();
 
 private:
     Ui::Login_Register *ui;
