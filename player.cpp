@@ -1,6 +1,7 @@
 #include "player.h"
 
-Player::Player() {}
+Player::Player(const QString &_name , const QString &_password, const QString &_nickname, const int &_level, const int &_checknum, const int &_exp) :
+    User(_name, _password, _nickname, _level), checknum(_checknum), exp(_exp) {}
 
 int Player::get_checknum() const {
     return checknum;

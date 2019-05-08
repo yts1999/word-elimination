@@ -5,7 +5,7 @@
 
 class Manager : public User {
 public:
-    Manager();
+    Manager(const QString &_name = "", const QString &_password = "", const QString &_nickname = "", const int &_level = 1, const int &_probnum = 0);
     int get_probnum() const;
     void inc_probnum();
 

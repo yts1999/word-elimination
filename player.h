@@ -5,7 +5,7 @@
 
 class Player : public User {
 public:
-    Player();
+    Player(const QString &_name = "", const QString &_password = "", const QString &_nickname = "", const int &_level = 1, const int &_checknum = 0, const int &_exp = 0);
     int get_checknum() const;
     int get_exp() const;
     void inc_checknum();
