@@ -30,17 +30,22 @@ SOURCES += \
     login.cpp \
     login_register.cpp \
     register.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    user.cpp \
+    player.cpp \
+    manager.cpp
 
 HEADERS += \
     userdb.h \
     login.h \
     login_register.h \
     register.h \
-    mainwindow.h
+    mainwindow.h \
+    user.h \
+    player.h \
+    manager.h
 
 FORMS += \
-    login.ui \
     login.ui \
     login_register.ui \
     register.ui \
