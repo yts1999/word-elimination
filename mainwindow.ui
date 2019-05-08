@@ -18,29 +18,71 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>28</y>
       <width>800</width>
-      <height>600</height>
+      <height>572</height>
      </rect>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
     <widget class="QWidget" name="game_option">
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(243, 243, 243);</string>
+     </property>
      <attribute name="title">
       <string>游戏选项</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="player_show">
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(243, 243, 243);</string>
+     </property>
      <attribute name="title">
       <string>查看闯关者</string>
      </attribute>
+     <widget class="QTableView" name="player_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>796</width>
+        <height>541</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="manager_show">
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(243, 243, 243);</string>
+     </property>
      <attribute name="title">
       <string>查看出题者</string>
      </attribute>
+     <widget class="QTableView" name="manager_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>796</width>
+        <height>541</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>5</y>
+      <width>780</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>用户信息</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
