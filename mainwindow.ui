@@ -27,16 +27,16 @@
      <number>0</number>
     </property>
     <widget class="QWidget" name="game_option">
-     <property name="styleSheet">
-      <string notr="true">background-color:rgb(243, 243, 243);</string>
+     <property name="autoFillBackground">
+      <bool>true</bool>
      </property>
      <attribute name="title">
       <string>游戏选项</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="player_show">
-     <property name="styleSheet">
-      <string notr="true">background-color:rgb(243, 243, 243);</string>
+     <property name="autoFillBackground">
+      <bool>true</bool>
      </property>
      <attribute name="title">
       <string>查看闯关者</string>
@@ -46,15 +46,124 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
+        <width>615</width>
         <height>541</height>
        </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="player_queryButton">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>230</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>查询</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="player_select_property">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>90</y>
+        <width>111</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>用户名</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>昵称</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>挑战关卡数</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>经验值</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>等级</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="player_select_property_label">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>60</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择属性</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="player_select_field_label">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>130</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>查询字段</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="player_select_field">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>160</y>
+        <width>113</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="player_select_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>30</y>
+        <width>111</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>根据属性查询</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="manager_show">
-     <property name="styleSheet">
-      <string notr="true">background-color:rgb(243, 243, 243);</string>
+     <property name="autoFillBackground">
+      <bool>true</bool>
      </property>
      <attribute name="title">
       <string>查看出题者</string>
@@ -64,10 +173,119 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
+        <width>615</width>
         <height>541</height>
        </rect>
       </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="manager_queryButton">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>230</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>查询</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="manager_select_property_label">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>60</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择属性</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="manager_select_field">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>160</y>
+        <width>113</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="manager_select_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>30</y>
+        <width>111</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>根据属性查询</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="manager_select_field_label">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>130</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>查询字段</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="manager_select_property">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>90</y>
+        <width>111</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>用户名</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>昵称</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>出题数</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>经验值</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>等级</string>
+       </property>
+      </item>
      </widget>
     </widget>
    </widget>

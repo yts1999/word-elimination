@@ -4,7 +4,7 @@
 #include <QSqlDatabase>
 #include <QString>
 
-class UserDatabase : private QSqlDatabase {
+class UserDatabase : public QSqlDatabase {
 public:
        UserDatabase();
        ~UserDatabase();

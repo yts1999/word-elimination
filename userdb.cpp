@@ -44,5 +44,5 @@ int UserDatabase::check_usr_pwd(const QString &usr, const QString &pwd) const {
 
 void UserDatabase::add_usr(const QString &usr, const QString &pwd, const QString &name, const int &usrtype) {
     QSqlQuery userdb_query(*this);
-    userdb_query.exec(QString("insert into user values('%1','%2','%3','%4','0','0','1')").arg(usr).arg(pwd).arg(name).arg(usrtype));
+    userdb_query.exec(QString("insert into user values('%1','%2','%3','%4','0','0','1')").arg(usr).arg(pwd).arg(name).arg(usrtype == -2?0:1));
 }
