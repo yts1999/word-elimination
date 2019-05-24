@@ -10,7 +10,7 @@ Login_Register::Login_Register(QWidget *parent, UserDatabase *_userdb) :
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
     connect(&lw, SIGNAL(toRegister()), this, SLOT(switch_to_register()));
     connect(&rw, SIGNAL(toLogin()), this, SLOT(switch_to_login()));
-    connect(&lw, SIGNAL(toMainWindow()), this, SLOT(switch_to_MainWindow()));
+    connect(&lw, SIGNAL(toMainWindow(QString)), this, SLOT(switch_to_MainWindow(QString)));
 }
 
 Login_Register::~Login_Register()
@@ -32,7 +32,7 @@ void Login_Register::switch_to_register() {
     rw.show();
 }
 
-void Login_Register::switch_to_MainWindow() {
+void Login_Register::switch_to_MainWindow(QString usrname) {
     close();
-    emit toMainWindow();
+    emit toMainWindow(usrname);
 }

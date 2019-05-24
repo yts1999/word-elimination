@@ -1,4 +1,6 @@
 #include "userdb.h"
+#include "player.h"
+#include "manager.h"
 #include <QString>
 #include <QMessageBox>
 #include <QSqlDatabase>
@@ -45,4 +47,12 @@ int UserDatabase::check_usr_pwd(const QString &usr, const QString &pwd) const {
 void UserDatabase::add_usr(const QString &usr, const QString &pwd, const QString &name, const int &usrtype) {
     QSqlQuery userdb_query(*this);
     userdb_query.exec(QString("insert into user values('%1','%2','%3','%4','0','0','1')").arg(usr).arg(pwd).arg(name).arg(usrtype == -2?0:1));
+}
+
+int UserDatabase::get_usr_type(const QString &usr) const {
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString("select * from user where name=='%1'").arg(usr));
+    if (! userdb_query.first())
+        return -1;
+    return userdb_query.value(3).toInt();
 }

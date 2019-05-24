@@ -19,7 +19,7 @@ public:
 
 signals:
     void toRegister();
-    void toMainWindow();
+    void toMainWindow(QString usrname);
 
 private slots:
     void on_loginButton_clicked();

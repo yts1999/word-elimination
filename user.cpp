@@ -3,6 +3,8 @@
 User::User(const QString &_name, const QString &_password, const QString &_nickname, const int &_level) :
     name(_name), password(_password), nickname(_nickname), level(_level) {}
 
+User::~User() {}
+
 QString User::get_name() const {
     return name;
 }

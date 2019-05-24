@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     static UserDatabase userdb;
     Login_Register lrw(nullptr, &userdb);
     MainWindow w(nullptr, &userdb);
-    QObject::connect(&lrw, SIGNAL(toMainWindow()), &w, SLOT(show()));
+    QObject::connect(&lrw, SIGNAL(toMainWindow(QString)), &w, SLOT(login_user(QString)));
     lrw.show();
     return a.exec();
 }

@@ -18,12 +18,12 @@ public:
     ~Login_Register();
 
 signals:
-    void toMainWindow();
+    void toMainWindow(QString);
 
 private slots:
     void switch_to_login();
     void switch_to_register();
-    void switch_to_MainWindow();
+    void switch_to_MainWindow(QString usrname);
 
 private:
     Ui::Login_Register *ui;
