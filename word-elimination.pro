@@ -33,7 +33,8 @@ SOURCES += \
     mainwindow.cpp \
     user.cpp \
     player.cpp \
-    manager.cpp
+    manager.cpp \
+    worddb.cpp
 
 HEADERS += \
     userdb.h \
@@ -43,7 +44,8 @@ HEADERS += \
     mainwindow.h \
     user.h \
     player.h \
-    manager.h
+    manager.h \
+    worddb.h
 
 FORMS += \
     login.ui \

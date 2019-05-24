@@ -11,15 +11,14 @@ UserDatabase::UserDatabase() :
     QSqlDatabase(addDatabase("QSQLITE", "userdb")) {
         setHostName("localhost");
         setDatabaseName("users.db");
-        if (! open()) {
+        if (! open())
             QMessageBox::critical(nullptr, "错误", "连接错误！");
-        }
         else {
             QSqlQuery userdb_create(*this);
             userdb_create.exec("create table user(name varchar(10) primary key, passwd varchar(20), "
                                "nickname varchar(20), type tinyint, cp_num int, exp int, level int)");
         }
-    }
+}
 
 UserDatabase::~UserDatabase() {
     close();
