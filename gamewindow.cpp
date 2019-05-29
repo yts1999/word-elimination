@@ -27,6 +27,8 @@ void Gamewindow::init(Player *_player) {
 }
 
 void Gamewindow::on_pushButton_clicked() {
+    show_timer.stop();
+    wait_timer.stop();
     hide();
 }
 
