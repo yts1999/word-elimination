@@ -8,6 +8,7 @@ public:
     WordDatabase();
     ~WordDatabase();
     void add_word(const QString &word);
+    QString get_word() const;
 };
 
 #endif // WORDDB_H

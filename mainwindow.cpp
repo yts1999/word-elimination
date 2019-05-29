@@ -5,8 +5,8 @@
 #include <QDesktopWidget>
 #include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent, UserDatabase *_userdb) :
-    QMainWindow(parent), ui(new Ui::MainWindow), userdb(_userdb), player_model(this, *_userdb), manager_model(this, *_userdb) {
+MainWindow::MainWindow(QWidget *parent, UserDatabase *_userdb, WordDatabase *_worddb) :
+    QMainWindow(parent), ui(new Ui::MainWindow), userdb(_userdb), player_model(this, *_userdb), manager_model(this, *_userdb), addword(nullptr, _worddb), gw(nullptr, _worddb) {
     ui->setupUi(this);
     setFixedSize(800, 600);
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent, UserDatabase *_userdb) :
         ui->manager_table->setColumnWidth(i, 150);
         ui->manager_table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Fixed);
     }
+    addword.hide();
+    gw.hide();
 }
 
 MainWindow::~MainWindow() {
@@ -47,10 +49,15 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::login_user(QString usrname) {
-    if (userdb->get_usr_type(usrname) == 0)
+    if (userdb->get_usr_type(usrname) == 0) {
         user = new Player(userdb, usrname);
-     else
+        ui->tabWidget->removeTab(1);
+    }
+     else {
         user = new Manager(userdb, usrname);
+        ui->tabWidget->removeTab(0);
+    }
+    connect(user, SIGNAL(modifyed()), this, SLOT(refresh_userinfo()));
     refresh_userinfo();
     show();
 }
@@ -145,4 +152,14 @@ void MainWindow::on_manager_select_checkBox_stateChanged(int arg1) {
         ui->manager_select_field->setEnabled(true);
 
     }
+}
+
+void MainWindow::on_addwordButton_clicked() {
+    addword.set_manager(dynamic_cast<Manager*>(user));
+    addword.show();
+}
+
+void MainWindow::on_gameButton_clicked() {
+    gw.init(dynamic_cast<Player*>(user));
+    gw.show();
 }

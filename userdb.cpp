@@ -55,3 +55,18 @@ int UserDatabase::get_usr_type(const QString &usr) const {
         return -1;
     return userdb_query.value(3).toInt();
 }
+
+void UserDatabase::modify_cp_num(const QString &usr, const int &cp_num) {
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString("update user set cp_num = '%1' where name == '%2'").arg(cp_num).arg(usr));
+}
+
+void UserDatabase::modify_exp(const QString &usr, const int &exp) {
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString("update user set exp = '%1' where name == '%2'").arg(exp).arg(usr));
+}
+
+void UserDatabase::modify_level(const QString &usr, const int &level) {
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString("update user set level = '%1' where name == '%2'").arg(level).arg(usr));
+}

@@ -26,13 +26,57 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="game_option">
+    <widget class="QWidget" name="player_game_option">
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
      <attribute name="title">
       <string>游戏选项</string>
      </attribute>
+     <widget class="QPushButton" name="gameButton">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>80</y>
+        <width>240</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>开始闯关</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="manager_game_option">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <attribute name="title">
+      <string>游戏选项</string>
+     </attribute>
+     <widget class="QPushButton" name="addwordButton">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>80</y>
+        <width>240</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>添加单词</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="player_show">
      <property name="autoFillBackground">

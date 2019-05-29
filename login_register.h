@@ -9,8 +9,7 @@ namespace Ui {
 class Login_Register;
 }
 
-class Login_Register : public QWidget
-{
+class Login_Register : public QWidget {
     Q_OBJECT
 
 public:

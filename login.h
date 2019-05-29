@@ -8,8 +8,7 @@ namespace Ui {
 class Login;
 }
 
-class Login : public QWidget
-{
+class Login : public QWidget {
     Q_OBJECT
 
 public:
@@ -24,6 +23,8 @@ signals:
 private slots:
     void on_loginButton_clicked();
     void on_registerButton_clicked();
+
+    void on_passWord_returnPressed();
 
 private:
     Ui::Login *ui;

@@ -25,6 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    addword.cpp \
+    gamewindow.cpp \
         main.cpp \
     userdb.cpp \
     login.cpp \
@@ -37,6 +39,8 @@ SOURCES += \
     worddb.cpp
 
 HEADERS += \
+    addword.h \
+    gamewindow.h \
     userdb.h \
     login.h \
     login_register.h \
@@ -48,6 +52,8 @@ HEADERS += \
     worddb.h
 
 FORMS += \
+    addword.ui \
+    gamewindow.ui \
     login.ui \
     login_register.ui \
     register.ui \

@@ -2,19 +2,26 @@
 #define USER_H
 
 #include "userdb.h"
+#include <QObject>
 #include <QString>
 
-class User {
+class User : public QObject {
+    Q_OBJECT
+
 public:
-    User(const QString &_name = "", const QString &_password = "", const QString &_nickname = "", const int &_level = 1);
-    virtual ~User();
+    User(UserDatabase *_userdb = nullptr, QString _name = "");
+    ~User();
     QString get_name() const;
     QString get_nickname() const;
     virtual int get_usrtype() const = 0;
     int get_level() const;
     void inc_level();
 
+signals:
+    void modifyed();
+
 protected:
+    UserDatabase *userdb;
     QString name, password, nickname;
     int level;
 };

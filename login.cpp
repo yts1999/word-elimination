@@ -7,8 +7,8 @@ Login::Login(QWidget *parent, UserDatabase *_userdb) :
     QWidget(parent), ui(new Ui::Login), userdb(_userdb) {
     ui->setupUi(this);
     //使用正则表达式限定输入格式
-    ui->userName->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{1,10}$"), this));
-    ui->passWord->setValidator(new QRegExpValidator(QRegExp("^.{1,20}$"), this));
+    ui->userName->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{0,10}$"), this));
+    ui->passWord->setValidator(new QRegExpValidator(QRegExp("^.{0,20}$"), this));
 }
 
 Login::~Login() {
@@ -41,4 +41,8 @@ void Login::on_loginButton_clicked() {
 
 void Login::on_registerButton_clicked() {
     emit toRegister();
+}
+
+void Login::on_passWord_returnPressed() {
+    on_loginButton_clicked();
 }

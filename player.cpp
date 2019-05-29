@@ -2,11 +2,8 @@
 #include <QVariant>
 #include <QSqlQuery>
 
-Player::Player(const QString &_name , const QString &_password, const QString &_nickname, const int &_checknum, const int &_exp, const int &_level) :
-    User(_name, _password, _nickname, _level), checknum(_checknum), exp(_exp) {}
-
-Player::Player(UserDatabase *userdb, const QString &_name):
-    User(_name, "", "", 1), checknum(0), exp(0) {
+Player::Player(UserDatabase *_userdb, QString _name):
+    User(_userdb, _name), checknum(0), exp(0) {
     QSqlQuery userdb_query(*userdb);
     userdb_query.exec(QString("select * from user where name=='%1'").arg(name));
     if (! userdb_query.first())
@@ -34,8 +31,12 @@ int Player::get_exp() const {
 
 void Player::inc_checknum() {
     checknum++;
+    userdb->modify_cp_num(name, checknum);
+    emit modifyed();
 }
 
 void Player::add_exp(int delta) {
     exp += delta;
+    userdb->modify_exp(name, exp);
+    emit modifyed();
 }
