@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include "user.h"
-#include <userdb.h>
 
 class Player : public User {
     Q_OBJECT

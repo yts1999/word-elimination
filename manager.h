@@ -2,7 +2,6 @@
 #define MANAGER_H
 
 #include "user.h"
-#include "userdb.h"
 
 class Manager : public User {
     Q_OBJECT
