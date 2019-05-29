@@ -8,7 +8,6 @@ class Player : public User {
     Q_OBJECT
 
 public:
-    //Player(UserDatabase *_userdb = nullptr, QString _name = "", QString _password = "", QString _nickname = "", int _checknum = 0, int _exp = 0, int _level = 1);
     Player(UserDatabase *_userdb = nullptr, QString _name = "");
     ~Player();
     int get_usrtype() const;
