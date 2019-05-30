@@ -21,21 +21,21 @@ void Login::refresh() {
 }
 
 void Login::on_loginButton_clicked() {
-    QString usr = ui->userName->text(), pwd = ui->passWord->text();
+    QString usr = ui->userName->text(), pwd = ui->passWord->text(); //获取输入的用户名和密码
     if (usr == "")
         QMessageBox::warning(this, "提示", "请输入用户名！");
     else
         if (pwd == "")
             QMessageBox::warning(this, "提示", "请输入密码！");
         else {
-            int flag = userdb->check_usr_pwd(usr,pwd);
+            int flag = userdb->check_usr_pwd(usr,pwd); //进行用户名密码校验
             if (flag == 1)
                 QMessageBox::warning(this, "提示", "该用户不存在！");
             else
                 if (flag == 2)
                     QMessageBox::warning(this, "提示", "密码错误！");
                 else
-                    emit toMainWindow(usr);
+                    emit toMainWindow(usr); //用户名密码校验正确，切换到主窗口
         }
 }
 

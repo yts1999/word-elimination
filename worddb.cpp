@@ -3,7 +3,7 @@
 #include <QSqlQuery>
 #include <QVariant>
 
-WordDatabase::WordDatabase() :
+WordDatabase::WordDatabase() : //数据库初始化
     QSqlDatabase(addDatabase("QSQLITE", "worddb")) {
         setHostName("localhost");
         setDatabaseName("words.db");
@@ -20,12 +20,12 @@ WordDatabase::~WordDatabase() {
     removeDatabase("worddb");
 }
 
-void WordDatabase::add_word(const QString &word) {
+void WordDatabase::add_word(const QString &word) { //添加单词
     QSqlQuery worddb_query(*this);
     worddb_query.exec(QString("insert into word values('%1')").arg(word));
 }
 
-QString WordDatabase::get_word() const {
+QString WordDatabase::get_word() const { //获取单词
     QSqlQuery worddb_query(*this);
     worddb_query.exec("select count(*) from word");
     if (! worddb_query.first())

@@ -8,9 +8,9 @@
 MainWindow::MainWindow(QWidget *parent, UserDatabase *_userdb, WordDatabase *_worddb) :
     QMainWindow(parent), ui(new Ui::MainWindow), userdb(_userdb), player_model(this, *_userdb), manager_model(this, *_userdb), addword(nullptr, _worddb), gw(nullptr, _worddb) {
     ui->setupUi(this);
-    setFixedSize(800, 600);
+    setFixedSize(800, 600); //设置窗口大小及位置
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
-    player_model.setTable("user");
+    player_model.setTable("user"); //设置闯关者信息显示表格
     player_model.setFilter("type == 0");
     player_model.removeColumn(1);
     player_model.removeColumn(2);
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent, UserDatabase *_userdb, WordDatabase *_wo
         ui->player_table->setColumnWidth(i, 120);
         ui->player_table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Fixed);
     }
-    manager_model.setTable("user");
+    manager_model.setTable("user"); //设置出题者信息显示表格
     manager_model.setFilter("type == 1");
     manager_model.removeColumn(1);
     manager_model.removeColumn(2);
@@ -49,31 +49,31 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::login_user(QString usrname) {
-    if (userdb->get_usr_type(usrname) == 0) {
+    if (userdb->get_usr_type(usrname) == 0) { //如果用户为闯关者，删除出题者游戏选项
         user = new Player(userdb, usrname);
         ui->tabWidget->removeTab(1);
     }
-     else {
+     else { //如果用户为出题者，删除闯关者游戏选项
         user = new Manager(userdb, usrname);
         ui->tabWidget->removeTab(0);
     }
-    connect(user, SIGNAL(modifyed()), this, SLOT(refresh_userinfo()));
+    connect(user, SIGNAL(modifyed()), this, SLOT(refresh_userinfo())); //用户信息被修改时刷新用户信息显示
     refresh_userinfo();
     show();
 }
 
-void MainWindow::refresh_userinfo() {
+void MainWindow::refresh_userinfo() { //刷新用户信息显示
     if (user->get_usrtype() == 0)
         ui->user_info->setText(QString("欢迎您，闯关者%1！挑战关卡数：%2　经验值：%3　等级：%4").arg(user->get_nickname()).arg(dynamic_cast<Player*>(user)->get_checknum()).arg(dynamic_cast<Player*>(user)->get_exp()).arg(user->get_level()));
      else
         ui->user_info->setText(QString("欢迎您，出题者%1！出题数：%2　等级：%3").arg(user->get_nickname()).arg(dynamic_cast<Manager*>(user)->get_probnum()).arg(user->get_level()));
 }
 
-void MainWindow::on_player_queryButton_clicked() {
+void MainWindow::on_player_queryButton_clicked() { //闯关者数据查询
     if (ui->player_select_checkBox->isChecked()) {
-        int property = ui->player_select_property->currentIndex();
+        int property = ui->player_select_property->currentIndex(); //获取设定的查询字符及内容
         QString field = ui->player_select_field->text();
-        switch (property) {
+        switch (property) { //根据查询字段及内容设定过滤器
         case 0:
             player_model.setFilter(QString("type == 0 and name == '%1'").arg(field));
             break;
@@ -99,11 +99,11 @@ void MainWindow::on_player_queryButton_clicked() {
     player_model.select();
 }
 
-void MainWindow::on_manager_queryButton_clicked() {
+void MainWindow::on_manager_queryButton_clicked() { //出题者数据查询
     if (ui->manager_select_checkBox->isChecked()) {
-        int property = ui->manager_select_property->currentIndex();
+        int property = ui->manager_select_property->currentIndex(); //获取设定的查询字段及内容
         QString field = ui->manager_select_field->text();
-        switch (property) {
+        switch (property) { //根据查询字段及内容设定过滤器
         case 0:
             manager_model.setFilter(QString("type == 1 and name == '%1'").arg(field));
             break;
@@ -126,7 +126,7 @@ void MainWindow::on_manager_queryButton_clicked() {
     manager_model.select();
 }
 
-void MainWindow::on_player_select_checkBox_stateChanged(int arg1) {
+void MainWindow::on_player_select_checkBox_stateChanged(int arg1) { //根据闯关者查询勾选情况启用或禁用查找选项
     switch (arg1) {
     case (Qt::Unchecked):
         ui->player_select_property->setEnabled(false);
@@ -140,7 +140,7 @@ void MainWindow::on_player_select_checkBox_stateChanged(int arg1) {
     }
 }
 
-void MainWindow::on_manager_select_checkBox_stateChanged(int arg1) {
+void MainWindow::on_manager_select_checkBox_stateChanged(int arg1) { //根据出题者查询勾选情况启用或禁用查找选项
     switch (arg1) {
     case (Qt::Unchecked):
         ui->manager_select_property->setEnabled(false);
@@ -154,12 +154,12 @@ void MainWindow::on_manager_select_checkBox_stateChanged(int arg1) {
     }
 }
 
-void MainWindow::on_addwordButton_clicked() {
+void MainWindow::on_addwordButton_clicked() { //添加单词
     addword.set_manager(dynamic_cast<Manager*>(user));
     addword.show();
 }
 
-void MainWindow::on_gameButton_clicked() {
+void MainWindow::on_gameButton_clicked() { //开始游戏
     gw.init(dynamic_cast<Player*>(user));
     gw.show();
 }

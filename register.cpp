@@ -17,7 +17,7 @@ Register::~Register() {
     delete ui;
 }
 
-void Register::refresh() {
+void Register::refresh() { //清空所有输入
     ui->userName->clear();
     ui->nickName->clear();
     ui->passWord->clear();
@@ -29,7 +29,7 @@ void Register::refresh() {
 }
 
 void Register::on_confirmButton_clicked() {
-    QString usr = ui->userName->text(), name = ui->nickName->text(), pwd = ui->passWord->text(), cpwd = ui->confirmpassWord->text();
+    QString usr = ui->userName->text(), name = ui->nickName->text(), pwd = ui->passWord->text(), cpwd = ui->confirmpassWord->text(); //获取表单信息
     int usrtype = ui->userCategory->checkedId();
     if (usr == "")
         QMessageBox::warning(this, "提示", "请输入用户名！");

@@ -5,28 +5,28 @@
 #include <QMessageBox>
 
 Addword::Addword(QWidget *parent, WordDatabase *_worddb) :
-    QDialog(parent), ui(new Ui::Addword), worddb(_worddb), manager(nullptr) {
+    QDialog(parent), ui(new Ui::Addword), worddb(_worddb), manager(nullptr) { // 设定窗口大小位置
     ui->setupUi(this);
     setFixedSize(500, 400);
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
-    ui->wordInput->setValidator(new QRegExpValidator(QRegExp("^[a-z]{1,100}$"), this));
+    ui->wordInput->setValidator(new QRegExpValidator(QRegExp("^[a-z]{1,100}$"), this)); //通过正则表达式限制输入
 }
 
 Addword::~Addword() {
     delete ui;
 }
 
-void Addword::set_manager(Manager *_manager) {
+void Addword::set_manager(Manager *_manager) { //设置出题者信息
     manager = _manager;
 }
 
 void Addword::on_addwordButton_clicked() {
-    QString word_input = ui->wordInput->text();
-    if (word_input == "")
+    QString word_input = ui->wordInput->text(); //接受单词输入
+    if (word_input == "") //输入为空
         QMessageBox::warning(this, "提示", "请输入单词！");
-    else {
+    else { //输入合法
         worddb->add_word(word_input);
-        manager->inc_probnum();
+        manager->inc_probnum(); //增加出题者出题数
         QMessageBox::information(this, "成功", "添加成功！");
         ui->wordInput->clear();
     }
