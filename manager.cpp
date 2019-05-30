@@ -27,5 +27,7 @@ int Manager::get_probnum() const { //出题数目
 void Manager::inc_probnum() { //增加出题数目
     probnum++;
     userdb->modify_cp_num(name, probnum); //修改数据库信息
+    if (probnum % 15 == 0) //每15道题增加一次等级
+        inc_level();
     emit modifyed();
 }

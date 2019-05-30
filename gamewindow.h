@@ -5,6 +5,7 @@
 #include "worddb.h"
 #include <QDialog>
 #include <QTimer>
+#include <QTime>
 
 namespace Ui {
 class Gamewindow;
@@ -32,6 +33,7 @@ private:
     int word_counter, word_counter_limit;
     WordDatabase *worddb;
     QString word;
+    QTime tim;
 };
 
 #endif // GAMEWINDOW_H

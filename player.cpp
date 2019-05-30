@@ -38,5 +38,7 @@ void Player::inc_checknum() { //增加闯关数目
 void Player::add_exp(int delta) { //增加经验值
     exp += delta;
     userdb->modify_exp(name, exp); //修改数据库信息
+    if (exp / 100 > (exp - delta) / 100) //每100经验值增加一次用户等级
+        inc_level();
     emit modifyed();
 }

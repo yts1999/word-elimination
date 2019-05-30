@@ -24,12 +24,15 @@ void Addword::on_addwordButton_clicked() {
     QString word_input = ui->wordInput->text(); //接受单词输入
     if (word_input == "") //输入为空
         QMessageBox::warning(this, "提示", "请输入单词！");
-    else { //输入合法
-        worddb->add_word(word_input);
-        manager->inc_probnum(); //增加出题者出题数
-        QMessageBox::information(this, "成功", "添加成功！");
-        ui->wordInput->clear();
-    }
+    else
+        if (worddb->check_word(word_input)) //单词已经存在
+            QMessageBox::warning(this, "提示", "该单词已存在！");
+        else { //输入合法
+            worddb->add_word(word_input);
+            manager->inc_probnum(); //增加出题者出题数
+            QMessageBox::information(this, "成功", "添加成功！");
+            ui->wordInput->clear();
+        }
 }
 
 void Addword::on_returnButton_clicked() {
