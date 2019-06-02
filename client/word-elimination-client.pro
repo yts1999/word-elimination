@@ -4,11 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = word-elimination
+TARGET = word-elimination-client
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,9 +26,9 @@ CONFIG += c++11
 
 SOURCES += \
     addword.cpp \
+    client.cpp \
     gamewindow.cpp \
-        main.cpp \
-    userdb.cpp \
+    main.cpp \
     login.cpp \
     login_register.cpp \
     register.cpp \
@@ -36,12 +36,12 @@ SOURCES += \
     user.cpp \
     player.cpp \
     manager.cpp \
-    worddb.cpp
+    userdata.cpp
 
 HEADERS += \
     addword.h \
+    client.h \
     gamewindow.h \
-    userdb.h \
     login.h \
     login_register.h \
     register.h \
@@ -49,7 +49,7 @@ HEADERS += \
     user.h \
     player.h \
     manager.h \
-    worddb.h
+    userdata.h
 
 FORMS += \
     addword.ui \

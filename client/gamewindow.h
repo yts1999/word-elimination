@@ -2,7 +2,7 @@
 #define GAMEWINDOW_H
 
 #include "player.h"
-#include "worddb.h"
+#include "client.h"
 #include <QDialog>
 #include <QTimer>
 #include <QTime>
@@ -15,7 +15,7 @@ class Gamewindow : public QDialog {
     Q_OBJECT
 
 public:
-    explicit Gamewindow(QWidget *parent = nullptr, WordDatabase *_worddb = nullptr);
+    explicit Gamewindow(QWidget *parent = nullptr, Client *_client = nullptr);
     ~Gamewindow();
     void init(Player *_player);
 
@@ -31,7 +31,7 @@ private:
     int show_timer_value, wait_timer_value;
     QTimer show_timer, wait_timer;
     int word_counter, word_counter_limit;
-    WordDatabase *worddb;
+    Client *client;
     QString word;
     QTime tim;
 };

@@ -3,8 +3,8 @@
 #include <QMessageBox>
 #include <QRegExpValidator>
 
-Login::Login(QWidget *parent, UserDatabase *_userdb) :
-    QWidget(parent), ui(new Ui::Login), userdb(_userdb) {
+Login::Login(QWidget *parent, Client *_client) :
+    QWidget(parent), ui(new Ui::Login), client(_client) {
     ui->setupUi(this);
     //使用正则表达式限定输入格式
     ui->userName->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{0,10}$"), this));
@@ -28,14 +28,17 @@ void Login::on_loginButton_clicked() {
         if (pwd == "")
             QMessageBox::warning(this, "提示", "请输入密码！");
         else {
-            int flag = userdb->check_usr_pwd(usr,pwd); //进行用户名密码校验
+            int flag = client->check_usr_pwd(usr,pwd); //进行用户名密码校验
             if (flag == 1)
                 QMessageBox::warning(this, "提示", "该用户不存在！");
             else
                 if (flag == 2)
                     QMessageBox::warning(this, "提示", "密码错误！");
                 else
-                    emit toMainWindow(usr); //用户名密码校验正确，切换到主窗口
+                    if (flag == 3)
+                        QMessageBox::warning(this, "提示", "该用户已登录！");
+                    else
+                        emit toMainWindow(usr); //用户名密码校验正确，切换到主窗口
         }
 }
 

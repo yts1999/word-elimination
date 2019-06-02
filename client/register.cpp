@@ -3,8 +3,8 @@
 #include <QMessageBox>
 #include <QRegExpValidator>
 
-Register::Register(QWidget *parent, UserDatabase *_userdb) :
-    QWidget(parent), ui(new Ui::Register), userdb(_userdb) {
+Register::Register(QWidget *parent, Client *_client) :
+    QWidget(parent), ui(new Ui::Register), client(_client) {
     ui->setupUi(this);
     //使用正则表达式限定输入格式
     ui->userName->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{0,10}$"), this));
@@ -49,10 +49,9 @@ void Register::on_confirmButton_clicked() {
                         if (usrtype == -1)
                             QMessageBox::warning(this, "提示", "请选择用户类型！");
                         else
-                            if (userdb->check_usr(usr))
+                            if (! client->add_usr(usr, pwd, name, usrtype))
                                 QMessageBox::warning(this, "提示", "该用户名已存在！");
                             else {
-                                userdb->add_usr(usr, pwd, name, usrtype);
                                 QMessageBox::information(this, "成功", "注册成功！");
                                 refresh();
                             }

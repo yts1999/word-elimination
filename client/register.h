@@ -1,18 +1,18 @@
 #ifndef REGISTER_H
 #define REGISTER_H
 
-#include "userdb.h"
+#include "client.h"
 #include <QWidget>
 
 namespace Ui {
-class Register;
+    class Register;
 }
 
 class Register : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Register(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr);
+    explicit Register(QWidget *parent = nullptr, Client *_client = nullptr);
     ~Register();
     void refresh();
 
@@ -25,7 +25,7 @@ private slots:
 
 private:
     Ui::Register *ui;
-    UserDatabase *userdb;
+    Client *client;
 };
 
 #endif // REGISTER_H

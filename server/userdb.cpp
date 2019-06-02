@@ -1,18 +1,18 @@
 #include "userdb.h"
-#include "player.h"
-#include "manager.h"
 #include <QString>
-#include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QVariant>
+#include <iostream>
 
 UserDatabase::UserDatabase() : //数据库初始化
     QSqlDatabase(addDatabase("QSQLITE", "userdb")) {
         setHostName("localhost");
         setDatabaseName("users.db");
-        if (! open())
-            QMessageBox::critical(nullptr, "错误", "连接错误！");
+        if (! open()) {
+            std::cout << "Error! Database connection failed.\n";
+            exit(1);
+        }
         else {
             QSqlQuery userdb_create(*this);
             userdb_create.exec("create table user(name varchar(10) primary key, passwd varchar(20), "
@@ -69,4 +69,13 @@ void UserDatabase::modify_exp(const QString &usr, const int &exp) { //修改经�
 void UserDatabase::modify_level(const QString &usr, const int &level) { //修改等级
     QSqlQuery userdb_query(*this);
     userdb_query.exec(QString("update user set level = '%1' where name == '%2'").arg(level).arg(usr));
+}
+
+QSqlRecord UserDatabase::get_usr_info(const QString &usr) { //根据用户名获取用户信息
+    QSqlQuery userdb_query(*this);
+    userdb_query.exec(QString("select * from user where name=='%1'").arg(usr));
+    if (! userdb_query.first())
+        return QSqlRecord();
+    else
+        return userdb_query.record();
 }

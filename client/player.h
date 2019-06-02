@@ -2,12 +2,14 @@
 #define PLAYER_H
 
 #include "user.h"
+#include "userdata.h"
 
 class Player : public User {
     Q_OBJECT
 
 public:
-    Player(UserDatabase *_userdb = nullptr, QString _name = "");
+    Player();
+    Player(Userdata data);
     ~Player();
     int get_usrtype() const;
     int get_checknum() const;

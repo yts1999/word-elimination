@@ -1,7 +1,7 @@
 #ifndef ADDWORD_H
 #define ADDWORD_H
 
-#include "worddb.h"
+#include "client.h"
 #include "manager.h"
 #include <QDialog>
 
@@ -13,7 +13,7 @@ class Addword : public QDialog {
     Q_OBJECT
 
 public:
-    explicit Addword(QWidget *parent = nullptr, WordDatabase *_worddb = nullptr);
+    explicit Addword(QWidget *parent = nullptr, Client *_client = nullptr);
     ~Addword();
     void set_manager(Manager *_manager);
 
@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::Addword *ui;
-    WordDatabase *worddb;
+    Client *client;
     Manager *manager;
 };
 

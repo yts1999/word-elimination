@@ -1,13 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "userdb.h"
+#include "client.h"
 #include "user.h"
-#include "worddb.h"
 #include "addword.h"
 #include "gamewindow.h"
 #include <QMainWindow>
-#include <QSqlTableModel>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -17,7 +16,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr, WordDatabase *_worddb = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr, Client *_client = nullptr);
     ~MainWindow();
 
 private slots:
@@ -32,8 +31,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    UserDatabase *userdb;
-    QSqlTableModel player_model, manager_model;
+    Client *client;
+    QStandardItemModel player_model, manager_model;
     User *user;
     Addword addword;
     Gamewindow gw;

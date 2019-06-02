@@ -2,8 +2,8 @@
 #include "ui_gamewindow.h"
 #include <QMessageBox>
 
-Gamewindow::Gamewindow(QWidget *parent, WordDatabase *_worddb) :
-    QDialog(parent), ui(new Ui::Gamewindow), player(nullptr), show_timer_value(0), wait_timer_value(0), word_counter(0), word_counter_limit(0), worddb(_worddb), tim(0, 0, 0) {
+Gamewindow::Gamewindow(QWidget *parent, Client *_client) :
+    QDialog(parent), ui(new Ui::Gamewindow), player(nullptr), show_timer_value(0), wait_timer_value(0), word_counter(0), word_counter_limit(0), client(_client), tim(0, 0, 0) {
     ui->setupUi(this);
     show_timer.setSingleShot(true);
     wait_timer.setSingleShot(true);
@@ -53,7 +53,7 @@ void Gamewindow::init(Player *_player) { //用户信息及界面初始化
 }
 
 void Gamewindow::on_pushButton_clicked() {
-    show_timer.stop(); //关闭定时器及窗口
+    show_timer.stop(); //关闭定时器窗口
     wait_timer.stop();
     hide();
 }
@@ -96,7 +96,7 @@ void Gamewindow::word_switch() {
 void Gamewindow::game_begin() { //显示新的单词
     ui->wordInput->clear();
     ui->wordInput->setEnabled(false);
-    ui->word_show->setText(worddb->get_word(player->get_checknum() + 1)); //根据关卡号从数据库获取一个单词
+    ui->word_show->setText(client->get_word(player->get_checknum() + 1)); //根据关卡号从数据库获取一个单词
     if (ui->word_show->text() == "") {
         QMessageBox::critical(this, "错误", "找不到单词！");
         show_timer.stop();

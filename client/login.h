@@ -1,7 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include "userdb.h"
+#include "client.h"
 #include <QWidget>
 
 namespace Ui {
@@ -12,7 +12,7 @@ class Login : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Login(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr);
+    explicit Login(QWidget *parent = nullptr, Client *_client = nullptr);
     ~Login();
     void refresh();
 
@@ -28,7 +28,7 @@ private slots:
 
 private:
     Ui::Login *ui;
-    UserDatabase *userdb;
+    Client *client;
 };
 
 #endif // LOGIN_H

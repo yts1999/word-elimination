@@ -2,12 +2,14 @@
 #define MANAGER_H
 
 #include "user.h"
+#include "userdata.h"
 
 class Manager : public User {
     Q_OBJECT
 
 public:
-    Manager(UserDatabase *_userdb = nullptr, QString _name = "");
+    Manager();
+    Manager(Userdata data);
     ~Manager();
     int get_usrtype() const;
     int get_probnum() const;

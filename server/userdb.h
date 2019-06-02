@@ -2,6 +2,7 @@
 #define USERDB_H
 
 #include <QSqlDatabase>
+#include <QSqlRecord>
 #include <QString>
 
 class UserDatabase : public QSqlDatabase {
@@ -15,6 +16,7 @@ public:
        void modify_cp_num(const QString &usr, const int &cp_num);
        void modify_exp(const QString &usr, const int &exp);
        void modify_level(const QString &usr, const int &level);
+       QSqlRecord get_usr_info(const QString &usr);
 };
 
 #endif // USERDB_H

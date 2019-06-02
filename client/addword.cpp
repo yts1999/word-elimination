@@ -4,8 +4,8 @@
 #include <QRegExpValidator>
 #include <QMessageBox>
 
-Addword::Addword(QWidget *parent, WordDatabase *_worddb) :
-    QDialog(parent), ui(new Ui::Addword), worddb(_worddb), manager(nullptr) { // 设定窗口大小位置
+Addword::Addword(QWidget *parent, Client *_client) :
+    QDialog(parent), ui(new Ui::Addword), client(_client), manager(nullptr) { // 设置窗口大小位置
     ui->setupUi(this);
     setFixedSize(500, 400);
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
@@ -25,10 +25,9 @@ void Addword::on_addwordButton_clicked() {
     if (word_input == "") //输入为空
         QMessageBox::warning(this, "提示", "请输入单词！");
     else
-        if (worddb->check_word(word_input)) //单词已经存在
+        if (! client->add_word(word_input)) //单词已经存在
             QMessageBox::warning(this, "提示", "该单词已存在！");
         else { //输入合法
-            worddb->add_word(word_input);
             manager->inc_probnum(); //增加出题者出题数
             QMessageBox::information(this, "成功", "添加成功！");
             ui->wordInput->clear();

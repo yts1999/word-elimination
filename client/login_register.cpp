@@ -2,8 +2,8 @@
 #include "ui_login_register.h"
 #include <QDesktopWidget>
 
-Login_Register::Login_Register(QWidget *parent, UserDatabase *_userdb) :
-    QWidget(parent), ui(new Ui::Login_Register), lw(this, _userdb), rw(this, _userdb) { //该窗口为登录注册的父窗口
+Login_Register::Login_Register(QWidget *parent, Client *_client) :
+    QWidget(parent), ui(new Ui::Login_Register), lw(this, _client), rw(this, _client) { //该窗口为登录注册的父窗口
     ui->setupUi(this);
     switch_to_login();
     setFixedSize(500, 400);
@@ -13,7 +13,8 @@ Login_Register::Login_Register(QWidget *parent, UserDatabase *_userdb) :
     connect(&lw, SIGNAL(toMainWindow(QString)), this, SLOT(switch_to_MainWindow(QString))); //登录成功，切换至主窗口
 }
 
-Login_Register::~Login_Register() {
+Login_Register::~Login_Register()
+{
     delete ui;
 }
 

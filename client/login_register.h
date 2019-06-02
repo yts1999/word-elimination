@@ -13,7 +13,7 @@ class Login_Register : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Login_Register(QWidget *parent = nullptr, UserDatabase *_userdb = nullptr);
+    explicit Login_Register(QWidget *parent = nullptr, Client *_client = nullptr);
     ~Login_Register();
 
 signals:
