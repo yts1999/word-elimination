@@ -53,7 +53,7 @@ void Gamewindow::init(Player *_player) { //用户信息及界面初始化
 }
 
 void Gamewindow::on_pushButton_clicked() {
-    show_timer.stop(); //关闭定时器窗口
+    show_timer.stop(); //关闭定时器及窗口
     wait_timer.stop();
     hide();
 }

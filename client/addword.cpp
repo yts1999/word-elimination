@@ -5,7 +5,7 @@
 #include <QMessageBox>
 
 Addword::Addword(QWidget *parent, Client *_client) :
-    QDialog(parent), ui(new Ui::Addword), client(_client), manager(nullptr) { // 设置窗口大小位置
+    QDialog(parent), ui(new Ui::Addword), client(_client), manager(nullptr) { // 设定窗口大小位置
     ui->setupUi(this);
     setFixedSize(500, 400);
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
