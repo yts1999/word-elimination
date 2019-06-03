@@ -76,7 +76,7 @@ void Server::recieve_request() { //收到来自客户端的请求
         sender->write(QJsonDocument(table_query(obj)).toJson());
         break;
 
-    case 7:
+    case 7: //用户注销
         std::cout << "Client logout\n";
         sender->write(QJsonDocument(logout(obj)).toJson());
     }
@@ -89,10 +89,10 @@ QJsonObject Server::check_usr_pwd(QJsonObject obj) { //校验用户名密码
     QString usr = obj.value("usr").toString(), pwd = obj.value("pwd").toString();
     int res = userdb->check_usr_pwd(usr, pwd);
     if (res == 0) {
-        if (online_user.count(usr))
+        if (online_user.count(usr)) //用户已经登录
             res = 3;
         else
-            online_user.insert(usr);
+            online_user.insert(usr); //在已登录列表中添加用户
     }
     QJsonObject resobj;
     resobj.insert("res", res);
