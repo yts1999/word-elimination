@@ -1,7 +1,7 @@
 # word-elimination
 
-#### 介绍
-单词消除游戏
+#### Introduction
+Word Elimination Game
 
-《面向对象程序设计实践(C++)》综合实验
+Comprehensive Experiments of Object-Oriented Programming Design and Practice (C++)
 
